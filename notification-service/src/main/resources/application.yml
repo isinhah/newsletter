@@ -1,0 +1,23 @@
+server:
+  port: 8082
+
+spring:
+  rabbitmq:
+    addresses: ${RABBITMQ_ADDRESSES}
+    queue:
+      verification:
+        name: subscriber.verification.queue
+      notification:
+        name: news.notification.queue
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${GMAIL_USERNAME}
+    password: ${GMAIL_APP_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
