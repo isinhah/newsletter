@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+  rabbitmq:
+    addresses: ${RABBITMQ_ADDRESSES}
+    queue:
+      verification:
+        name: subscriber.verification.queue
+      notification:
+        name: news.notification.queue
+
+news:
+  api:
+    key: ${NEWS_API_KEY}
+    base-url: https://gnews.io/api/v4/top-headlines
