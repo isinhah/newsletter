@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmação de cadastro</title>
+</head>
+<body>
+<h1>Confirme seu cadastro</h1>
+<p>Obrigado por se cadastrar! Clique no botão abaixo para confirmar seu email:</p>
+
+<p>
+    <a th:href="${verificationLink}"
+       style="background-color:#4CAF50;color:white;padding:10px 20px;text-decoration:none;border-radius:5px;">
+        Confirmar Email
+    </a>
+</p>
+
+<p>Se você não fez este cadastro, ignore esta mensagem.</p>
+</body>
+</html>

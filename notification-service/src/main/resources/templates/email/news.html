@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Notícias diárias</title>
+</head>
+<body style="font-family: Arial, sans-serif;">
+
+<h1 style="text-align: center;">📰 Notícias de hoje</h1>
+
+<div th:each="dto : ${newsList}" style="max-width: 600px; margin: 20px auto; border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
+    <h2 th:text="${dto.title}">Título</h2>
+    <p th:text="${dto.description}">Descrição</p>
+    <p><a th:href="${dto.url}" target="_blank">Leia mais</a></p>
+    <img th:src="${dto.urlToImage}" alt="Imagem da notícia" style="max-width: 100%; display:block; margin: 10px 0;">
+    <p style="font-size: 0.9em; color: gray;">
+        (Fonte: <span th:text="${dto.sourceName}">Nome da fonte</span>) -
+        Publicado em: <span th:text="${#dates.format(dto.publicationDate, 'dd/MM/yyyy HH:mm')}">Data</span>
+    </p>
+</div>
+
+</body>
+</html>
