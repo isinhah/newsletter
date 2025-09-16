@@ -29,7 +29,7 @@ public class EmailService {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 
             helper.setTo(to);
-            helper.setSubject("📰 Your Daily News");
+            helper.setSubject("📰 Suas notícias diárias");
 
             Context context = new Context();
             context.setVariable("newsList", newsList);
@@ -50,7 +50,7 @@ public class EmailService {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 
             helper.setTo(dto.email());
-            helper.setSubject("✅ Confirm Your Registration");
+            helper.setSubject("✅ Confirme seu cadastro");
 
             Context context = new Context();
             String verificationLink = "http://localhost:8080/api/subscribers/verify?token=" + dto.verificationToken();
