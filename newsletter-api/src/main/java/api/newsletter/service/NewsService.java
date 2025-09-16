@@ -24,6 +24,12 @@ public class NewsService {
     private final NewsApiClient newsApiClient;
     private final NewsPublisher newsPublisher;
 
+    @Scheduled(cron = "0 0 7 * * *")
+    public void sendDailyNews() {
+        List<NewsArticle> articles = fetchAndSaveArticles();
+        sendNews(articles);
+    }
+
     public List<NewsArticle> fetchAndSaveArticles() {
         NewsApiResponseDto response = newsApiClient.fetchLatestNews();
 
@@ -42,12 +48,6 @@ public class NewsService {
                 .toList();
 
         return newsArticleRepository.saveAll(articles);
-    }
-
-    @Scheduled(cron = "0 0 11 * * *")
-    public void sendDailyNews() {
-        List<NewsArticle> articles = fetchAndSaveArticles();
-        sendNews(articles);
     }
 
     public void fetchAndSendNewsManually(List<NewsArticle> articles) {
