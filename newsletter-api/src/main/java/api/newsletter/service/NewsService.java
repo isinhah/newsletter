@@ -44,7 +44,7 @@ public class NewsService {
         return newsArticleRepository.saveAll(articles);
     }
 
-    @Scheduled(cron = "0 0 7 * * *")
+    @Scheduled(cron = "0 0 11 * * *")
     public void sendDailyNews() {
         List<NewsArticle> articles = fetchAndSaveArticles();
         sendNews(articles);

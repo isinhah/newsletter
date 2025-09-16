@@ -10,6 +10,7 @@ import api.newsletter.mapper.SubscriberMapper;
 import api.newsletter.web.exception.InvalidSubscriberStatusException;
 import api.newsletter.web.exception.InvalidTokenException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ public class SubscriberService {
     private final SubscriberRepository subscriberRepository;
     private final EmailPublisher emailPublisher;
 
+    @Cacheable(value = "subscribers_cache", key = "#status + T(java.util.UUID).randomUUID().toString()")
     public Page<SubscriberResponseDto> getSubscribersByStatus(String status, Pageable pageable) {
         if (status == null || status.isBlank()) {
             Page<Subscriber> allSubscribers = subscriberRepository.findAll(pageable);
