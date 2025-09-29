@@ -24,6 +24,7 @@ A aplicação é composta por dois microsserviços: newsletter-api, responsável
 - Mapstruct
 - Lombok
 - Thymeleaf
+- RestTemplate
 
 ---
 
@@ -125,4 +126,5 @@ mvn spring-boot:run
 👩‍💻 Projeto desenvolvido por [Isabel Henrique](https://www.linkedin.com/in/isabel-henrique/)
 
 🤝 Fique à vontade para contribuir!
+
 
